@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        // L = largura, C = comprimento
+
+        Scanner sc = new Scanner (System.in);
+        int [] L = new int [2];
+        int [] C = new int [2];
+        int area1,area2;
+
+        for (int i = 0; i < 2; i++) {
+            System.out.printf("Informe a largura do %d local: ", i + 1);
+            L[i] = sc.nextInt();
+            System.out.printf("Informe o comprimento do %d local: ", i + 1);
+            C[i] = sc.nextInt();
+            while (true) {
+                if (!((L[i] >= 1 && L[i] <= 100) && (C[i] >= 1 && C[i] <= 100))) {
+                    System.out.print("Valores Invalido! Lembre das restrições.Informe novamente: ");
+                    System.out.printf("Informe a largura do %d local: ", i + 1);
+                    L[i] = sc.nextInt();
+                    System.out.printf("Informe o comprimento do %d local: ", i + 1);
+                    C[i] = sc.nextInt();
+                }else{
+                    break;
+                }
+            }
+
+        }
+        area1 = L[0]*C[0];
+        area2 = L[1]*C[1];
+        if (area1 > area2){
+            System.out.printf("\n Area do melhor local : %d m2",area1);
+        }else if (area2>area1){
+            System.out.printf("\n  Area do melhor local : %d m2 ",area2);
+        }else{
+            System.out.printf("\n  Areas iguais! Area: %d m2",area1);
+        }
+        sc.close();
+
+    }
+}
