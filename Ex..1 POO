@@ -64,7 +64,7 @@ public class Main {
 
       System.out.print("Informe a primeira nota: ");
         n1 = sc.nextDouble();
-        System.out.print("Informe a aegunda nota: ");
+        System.out.print("Informe a segunda nota: ");
         n2 = sc.nextDouble();
         aluno.setN1(n1);
         aluno.setN2(n2);
