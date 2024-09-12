@@ -1,9 +1,10 @@
-// CLASSE PESSOA:
+// CLASSE PESSOA: 
 
 public class Pessoa {
     private String nome;
     private int idade;
     private String cpf;
+
 
     public String getNome() {
         return nome;
@@ -30,19 +31,19 @@ public class Pessoa {
     }
 }
 
+
 // SUBCLASSE MEDICO: 
 
 import java.util.ArrayList;
+   import java.util.List;
+   import java.util.Scanner;
 
-public class Medico extends Pessoa {
-    private String funcao;
-    private ArrayList<String> historicoPacientes;
+  public class Medico extends Pessoa {
+       private String funcao;
+       public List<String> pacientes = new ArrayList <>(); 
+       Scanner sc = new Scanner(System.in);
 
-    public Medico(){
-        this.historicoPacientes = new ArrayList<>();
-    }
-
-    public String getFuncao() {
+   public String getFuncao() {
         return funcao;
     }
 
@@ -50,31 +51,34 @@ public class Medico extends Pessoa {
         this.funcao = funcao;
     }
 
-    public ArrayList<String> getHistoricoPacientes() {
-        return historicoPacientes;
+    public void addPaciente(){
+       String paciente = sc.nextLine().toLowerCase();
+          pacientes.add(paciente);
+    }
+    public void removerPaciente(){
+        String paciente = sc.nextLine().toLowerCase();
+         pacientes.remove(paciente);
+
+    }
+    public void PrintarPacientes(){
+        for(String paciente: pacientes){
+            System.out.println(paciente);
+        }
     }
 
-    public void setHistoricoPacientes(ArrayList<String> historicoPacientes) {
-        this.historicoPacientes = historicoPacientes;
-    }
+  }
 
-    public void AdicionarPacientes(String paciente){
-        historicoPacientes.add(paciente);
-    }
-    
-}
 
-// SUBCLASSE PACIENTE
+
+// CLASSE PACIENTE:
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Paciente extends Pessoa {
     private String condicao;
-    private ArrayList<String> exames;
-
-    public Paciente() {
-        this.exames = new ArrayList<>();
-    }
+    public ArrayList<String> exames = new ArrayList<>();
+    Scanner sc = new Scanner(System.in);
 
     public String getCondicao() {
         return condicao;
@@ -84,38 +88,122 @@ public class Paciente extends Pessoa {
         this.condicao = condicao;
     }
 
-    public ArrayList<String> getExames() {
-        return exames;
-    }
-
-    public void setExames(ArrayList<String> exames) {
-        this.exames = exames;
-    }
-
-    public void AdicionarExames(String exame){
+    public void addExames(){
+        String exame = sc.nextLine().toLowerCase();
         exames.add(exame);
+    }
+
+    public void removerExames() {
+        String exame = sc.nextLine().toLowerCase();
+        exames.remove(exame);
+
+    }
+
+    public void PrintarExames() {
+        for (String exame : exames) {
+            System.out.println(exame);
+        }
     }
 }
 
-// TESTANDO NO MAIN....
+
+
+
+// MAIN
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+
         Medico medico = new Medico();
-
-        medico.AdicionarPacientes("Pedro");
-        medico.AdicionarPacientes("Marcia");
-        medico.AdicionarPacientes("Ana");
-        System.out.print(medico.getHistoricoPacientes());
-
         Paciente paciente = new Paciente();
+        Scanner sc = new Scanner(System.in);
 
-        paciente.AdicionarExames("de Sangue");
-        paciente.AdicionarExames("de coracao");
-        paciente.AdicionarExames("de estomago");
-        System.out.print(paciente.getExames());
-        
+
+        medico.setFuncao("anestesista");
+        medico.setNome("Joao");
+        medico.setIdade(45);
+        medico.setCpf("274.123.123-55");
+
+        paciente.setCondicao("asmatica");
+        paciente.setNome("Maria");
+        paciente.setCpf("165.836.485-93");
+        paciente.setIdade(30);
+
+        int i = 0;
+        while( i != -1){
+
+            System.out.println("\n");
+            System.out.println("---MENU---");
+            System.out.println("1-  Informaçoes do  medico ");
+            System.out.println("2 - Adicionar paciente");
+            System.out.println("3 - Remover paciente");
+            System.out.println("4 - Imprimir paciente");
+            System.out.println("5-  Informaçoes do  paciente ");
+            System.out.println("6 - Adicionar exame");
+            System.out.println("7 - Remover exame");
+            System.out.println("8 - Imprimir exame");
+            System.out.println("9 - Sair");
+
+
+
+            int escolha = sc.nextInt();
+
+            switch(escolha){
+                case 1:
+                    System.out.println("Nome : " + medico.getNome());
+                    System.out.println("Funcao: "+ medico.getFuncao());
+                    System.out.println("Idade: "+ medico.getIdade());
+                    System.out.println("Cpf: "+ medico.getCpf());
+                    break;
+
+                case 2:
+                    medico.addPaciente();
+                    System.out.println("Paciente adicionado");
+                    break;
+
+                case 3:
+                    medico.removerPaciente();
+                    System.out.println("Paciente removido");
+                    break;
+
+                case 4:
+                    medico.PrintarPacientes();
+                    break;
+
+                case 5:
+                    System.out.println("Nome : " + paciente.getNome());
+                    System.out.println("Funcao: "+ paciente.getCondicao());
+                    System.out.println("Idade: "+ paciente.getIdade());
+                    System.out.println("Cpf: "+ paciente.getCpf());
+                    break;
+                case 6:
+                    paciente.addExames();
+                    System.out.println("Exame adicionado");
+                    break;
+
+                case 7:
+                    paciente.removerExames();
+                    System.out.println("Exame removido");
+                    break;
+                case 8:
+                    paciente.PrintarExames();
+                    break;
+                case 9:
+                    // Se fosse while true teria que colocar o if escolha == 3 break; depois do switch
+                    // e colocar "Saindo" no case e depois break
+                    // Melhor assim: (para sair)
+                    System.out.print("Tenha um bom dia!");
+                    i = -1;
+                    break;
+                default:
+                    System.out.print("Opçao invalida. Tente novamente: ");
+                    break;
+            }
+
+        }
+       sc.close();
+
+         }
     }
-}
-
 
