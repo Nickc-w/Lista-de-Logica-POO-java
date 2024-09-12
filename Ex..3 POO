@@ -1,0 +1,97 @@
+// CLASSE AUTOR: 
+
+public class Autor {
+    // nomeA = nome do autor
+    private String nomeA;
+
+    public Autor(String nomeA){
+        this.nomeA = nomeA;
+    }
+    
+
+    public String getNomeA() {
+        return nomeA;
+    }
+
+    public void setNomeA(String nomeA) {
+        this.nomeA = nomeA;
+    }
+}
+
+// SUBCLASSE LIVRO
+
+public class Livro extends Autor{
+    // nomeL = nome do livro
+    private String nomeL;
+    private String sinopse;
+    private String editora;
+
+    public Livro(String nomeA, String nomeL,String sinopse,String editora){
+        super(nomeA);
+        this.nomeL = nomeL;
+        this.sinopse = sinopse;
+        this.editora = editora;
+    }
+
+    public String getNomeL() {
+        return nomeL;
+    }
+
+    public void setNomeL(String nomeL) {
+        this.nomeL = nomeL;
+    }
+
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public void Informacoes(){
+        System.out.print("\nNome: "+ nomeL);
+        System.out.print("\nSinopse: "+ sinopse);
+        System.out.print("\nAutor: "+ getNomeA());
+        System.out.print("\nEditora: "+ editora);
+        System.out.print("\n");
+    }
+}
+
+// MAIN
+
+public class Main {
+    public static void main(String[] args) {
+    
+    Livro livro1 = new Livro("Clarice Lispector","Perto do coraçao selvagem","O livro explora a vida " +
+                                    "interior de Joana, mesclando suas" +
+                                  " experiências de menina e mulher.", "A noite");
+
+
+    Livro livro2 = new Livro(" Machado de Assis","Dom Casmurro","Bentinho narra sua vida, focando em seu ciúme por" +
+                                                               " Capitu.", " Companhia das Letras");
+
+
+    Livro livro3 = new Livro(" Antoine de Saint-Exupéry","O Pequeno Príncipe","Um príncipe visita planetas " +
+            "e reflete sobre a vida.", "Agir");
+
+    Livro livro4 = new Livro("Clarice Lispector","A Hora da Estrela","A vida simples e trágica de Macabéa" +
+            " é narrada com profundidade. " , " Rocco");
+
+    livro1.Informacoes();
+    livro2.Informacoes();
+    livro3.Informacoes();
+    livro4.Informacoes();
+
+    }
+}
+
+
