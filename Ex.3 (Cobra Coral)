@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[] sequencia = new int[4];
+
+
+        for (int i = 0; i < 4; i++) {
+            sequencia[i] = sc.nextInt();
+        }
+        sc.close();
+
+
+        if (isCoralVerdadeira(sequencia)) {
+            System.out.println("V");
+        } else {
+            System.out.println("F");
+        }
+    }
+
+    private static boolean isCoralVerdadeira(int[] sequencia) {
+
+        int[][] padrõesV = {
+                {sequencia[0], sequencia[1], sequencia[2], sequencia[3]},
+                {sequencia[1], sequencia[2], sequencia[3], sequencia[0]},
+                {sequencia[2], sequencia[3], sequencia[0], sequencia[1]},
+                {sequencia[3], sequencia[0], sequencia[1], sequencia[2]}
+        };
+
+         // padraoV = padrao da coral Verdadeira
+        int[] padrãoV = {1, 2, 1, 3};
+
+        for (int[] padrão : padrõesV) {
+            if (isMatchingPattern(padrão, padrãoV)) {
+                return true;
+            }
+        }
+        return false;
+
+
+    }
+
+    private static boolean isMatchingPattern(int[] padrão, int[] padrãoCorreto) {
+        for (int i = 0; i < padrão.length; i++) {
+            if (padrão[i] != padrãoCorreto[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+}
