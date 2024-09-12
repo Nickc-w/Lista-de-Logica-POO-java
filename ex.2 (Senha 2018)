@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int chute,errou = 0;
+
+        while(true) {
+            System.out.print("Informe o valor: ");
+            chute = sc.nextInt();
+            if (chute == 2018){
+                break;
+            }
+            errou += 1;
+        }
+
+        System.out.printf("Cino errou %d vez(es)",errou);
+
+    sc.close();
+    }
+}
