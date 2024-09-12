@@ -1,0 +1,77 @@
+// CLASSE ALUNOS: 
+
+public class Aluno {
+    private String nome;
+    private String matricula;
+    // n1 = nota 1 , n2 = nota 2
+    private double n1,n2;
+
+public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public double getN1() {
+        return n1;
+    }
+
+    public void setN1(double n1) {
+        this.n1 = n1;
+    }
+
+    public double getN2() {
+        return n2;
+    }
+
+    public void setN2(double n2) {
+        this.n2 = n2;
+    }
+
+    public double Media_notas(){
+        return (n1+n2)/2.0;
+    }
+
+    public void status(){
+        if (Media_notas() >= 6){
+            System.out.print("\nAprovado!");
+        }else{
+            System.out.print("\nReprovado!");
+        }
+    }
+}
+
+// TESTANDO NO MAIN: 
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        //double [] notas = {7,4,5.6,3.2};
+        Scanner sc = new Scanner(System.in);
+        Aluno aluno = new Aluno();
+        double n1,n2;
+
+      System.out.print("Informe a primeira nota: ");
+        n1 = sc.nextDouble();
+        System.out.print("Informe a aegunda nota: ");
+        n2 = sc.nextDouble();
+        aluno.setN1(n1);
+        aluno.setN2(n2);
+        System.out.print(aluno.Media_notas());
+        aluno.status();
+
+    sc.close();
+
+    }
+}
