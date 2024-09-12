@@ -1,4 +1,4 @@
-// CLASSE ALUNOS: 
+// CLASSE ALUNO: 
 
 public class Aluno {
     private String nome;
