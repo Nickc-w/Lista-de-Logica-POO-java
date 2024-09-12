@@ -70,7 +70,7 @@ import java.util.ArrayList;
 
 
 
-// CLASSE PACIENTE:
+// SUBCLASSE PACIENTE:
 
 import java.util.ArrayList;
 import java.util.Scanner;
