@@ -1,0 +1,121 @@
+// CLASSE PESSOA:
+
+public class Pessoa {
+    private String nome;
+    private int idade;
+    private String cpf;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+}
+
+// SUBCLASSE MEDICO: 
+
+import java.util.ArrayList;
+
+public class Medico extends Pessoa {
+    private String funcao;
+    private ArrayList<String> historicoPacientes;
+
+    public Medico(){
+        this.historicoPacientes = new ArrayList<>();
+    }
+
+    public String getFuncao() {
+        return funcao;
+    }
+
+    public void setFuncao(String funcao) {
+        this.funcao = funcao;
+    }
+
+    public ArrayList<String> getHistoricoPacientes() {
+        return historicoPacientes;
+    }
+
+    public void setHistoricoPacientes(ArrayList<String> historicoPacientes) {
+        this.historicoPacientes = historicoPacientes;
+    }
+
+    public void AdicionarPacientes(String paciente){
+        historicoPacientes.add(paciente);
+    }
+    
+}
+
+// SUBCLASSE PACIENTE
+
+import java.util.ArrayList;
+
+public class Paciente extends Pessoa {
+    private String condicao;
+    private ArrayList<String> exames;
+
+    public Paciente() {
+        this.exames = new ArrayList<>();
+    }
+
+    public String getCondicao() {
+        return condicao;
+    }
+
+    public void setCondicao(String condicao) {
+        this.condicao = condicao;
+    }
+
+    public ArrayList<String> getExames() {
+        return exames;
+    }
+
+    public void setExames(ArrayList<String> exames) {
+        this.exames = exames;
+    }
+
+    public void AdicionarExames(String exame){
+        exames.add(exame);
+    }
+}
+
+// TESTANDO NO MAIN....
+
+public class Main {
+    public static void main(String[] args) {
+        Medico medico = new Medico();
+
+        medico.AdicionarPacientes("Pedro");
+        medico.AdicionarPacientes("Marcia");
+        medico.AdicionarPacientes("Ana");
+        System.out.print(medico.getHistoricoPacientes());
+
+        Paciente paciente = new Paciente();
+
+        paciente.AdicionarExames("de Sangue");
+        paciente.AdicionarExames("de coracao");
+        paciente.AdicionarExames("de estomago");
+        System.out.print(paciente.getExames());
+        
+    }
+}
+
+
